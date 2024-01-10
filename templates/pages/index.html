@@ -7,5 +7,9 @@
     <h2>Bienvenido a la Página de Inicio</h2>
     <!-- Contenido específico de la página de inicio -->
     <h1>Bienvenido a la app de flask</h1>
-    Errores: {{ errorsito }}
+    Errores: {{ context.error }}
+    <br>
+    Mensajes: {{context.msj}}
+    <br>
+    Test: {{context.testVar}}
 {% endblock %}

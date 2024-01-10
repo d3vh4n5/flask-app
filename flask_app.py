@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from markupsafe import escape
 import pymysql.cursors
 from dotenv import load_dotenv
@@ -11,12 +11,12 @@ load_dotenv()
 
 app = Flask(__name__)
 
-errorsito = 'Estado declarado'
+errorsito = 'Estado: declarado - Original'
 
 try:
 
     # https://pypi.org/project/pymysql/
-    connection = pymysql.connect(host=os.getenv('DB2_HOST'),
+    connection = pymysql.connect(host=os.environ.get('DB2_HOST', 'loco'),
                                 user=os.getenv('DB2_USER'),
                                 password=os.getenv('DB2_PASS'),
                                 database=os.getenv('DB2_NAME'),
@@ -41,7 +41,7 @@ try:
         
         with connection.cursor() as cursor:
             # Read a multiple records
-            sql = "SELECT * FROM `usuarios`"
+            sql = "SELECT * FROM usuarios"
             cursor.execute(sql)
             result = cursor.fetchall()
             print(result)
@@ -53,7 +53,12 @@ except Exception as e:
 
 @app.route("/")
 def index():
-    return render_template("pages/index.html", errorsito = errorsito)
+    context = {
+        "error" : errorsito,
+        "msj" : "Esto es un mensaje",
+        "testVar" : os.environ.get('DB2_HOST', 'loco')
+    }
+    return render_template("pages/index.html", context = context)
 
 @app.route("/dinamica")
 def dinamica():
@@ -91,17 +96,24 @@ def get_data():
     }
     return jsonify(data)
 
-@app.route("/contacto")
+@app.route("/contacto", methods = ["POST", "GET"])
 def contactHandling():
     diccionario = {
         "nombre": "Juan",
         "edad" : 32,
         "soltero" : True
     }
+    consulta = {}
     respuesta = jsonify(diccionario)
     # Permitimos conexion de cualquier lado !!! WARNING Security!
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
-    return respuesta
+    if request.method == 'POST':
+        data = request.form
+        print(data['email'])
+        print(data['motivo'])
+        print(data['mensaje'])
+        return respuesta
+    return render_template('pages/contacto.html')
 
 
 
