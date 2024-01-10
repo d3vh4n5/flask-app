@@ -1,0 +1,65 @@
+.services {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+.services .contenido {
+    position: relative;
+    top: 20px;
+    z-index: 1;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.services h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.services p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Media queries para diseño responsive */
+
+@media screen and (max-width: 480px) {
+    .services h1 {
+        font-size: 1.5em;
+    }
+
+    .services p {
+        font-size: 1em;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Aumentar opacidad en dispositivos móviles si es necesario */
+    }
+}
+
+/* Estilos para tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .services h1 {
+        font-size: 1.8em;
+    }
+
+    .services p {
+        font-size: 1.1em;
+    }
+}
+
+/* Estilos para PC */
+@media screen and (min-width: 769px) {
+    .services h1 {
+        font-size: 2em;
+    }
+
+    .services p {
+        font-size: 1.2em;
+    }
+}

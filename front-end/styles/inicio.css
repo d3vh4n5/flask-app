@@ -1,0 +1,80 @@
+/* Estilos para la sección de inicio */
+.inicio {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.inicio .contenido {
+    top: 20px;
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.inicio h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.inicio p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    background-color: #555;
+}
+
+/* Media queries para diseño responsive */
+
+/* Estilos para móviles */
+@media screen and (max-width: 480px) {
+    .inicio h1 {
+        font-size: 1.5em;
+    }
+
+    .inicio p {
+        font-size: 1em;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Aumentar opacidad en dispositivos móviles si es necesario */
+    }
+}
+
+/* Estilos para tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .inicio h1 {
+        font-size: 1.8em;
+    }
+
+    .inicio p {
+        font-size: 1.1em;
+    }
+}
+
+/* Estilos para PC */
+@media screen and (min-width: 769px) {
+    .inicio h1 {
+        font-size: 2em;
+    }
+
+    .inicio p {
+        font-size: 1.2em;
+    }
+}
