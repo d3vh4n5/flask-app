@@ -46,12 +46,14 @@ try:
             result = cursor.fetchall()
             print(result)
 except Exception as e:
+    print("Se enconro un error: ")
+    print(e)
     errorsito = e
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", errorsito = errorsito)
+    return render_template("pages/index.html", errorsito = errorsito)
 
 @app.route("/dinamica")
 def dinamica():
@@ -60,7 +62,7 @@ def dinamica():
     numeros = [1, 2, 3, 4, 5]
 
     # Pasa los datos al template usando render_template
-    return render_template("dinamica.html", mensaje=mensaje, numeros=numeros)
+    return render_template("pages/dinamica.html", mensaje=mensaje, numeros=numeros)
 
 
 @app.route("/parametro/<name>")
@@ -69,7 +71,7 @@ def hello(name):
 
 @app.route("/page")
 def pagina():
-    return render_template('./pagina.html')
+    return render_template('pages/pagina.html')
 
 
 
