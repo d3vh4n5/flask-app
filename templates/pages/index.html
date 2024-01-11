@@ -4,12 +4,32 @@
 {% block title %}Página de Inicio{% endblock %}
 
 {% block content %}
-    <h2>Bienvenido a la Página de Inicio</h2>
-    <!-- Contenido específico de la página de inicio -->
-    <h1>Bienvenido a la app de flask</h1>
-    Errores: {{ context.error }}
-    <br>
-    Mensajes: {{context.msj}}
-    <br>
-    Test: {{context.testVar}}
+    <div class="container">
+
+        <h2>Bienvenido a la Página de Inicio</h2>
+        
+
+        <div class="card border border-warning border-start-3 bg-warning-subtle">
+            <h3>⚠️ Esto es una app en desarrollo con Flask desde el 09/01/2024</h3>
+        </div>
+        
+        <hr>
+        <h3>Logs:</h3>
+
+        {% if context.error != '' %}
+        <p class="text-danger">
+            Errores: {{ context.error }}
+        </p>
+        {% else %}
+        <p class="text-success">
+            Errores: None
+        </p>
+        {% endif %}
+        <p class="text-info">
+
+            Mensajes: {{context.msj}}
+            <br>
+            Test: {{context.testVar}}
+        </p>
+    </div>
 {% endblock %}

@@ -11,7 +11,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-errorsito = 'Estado: declarado - Original'
+errorsito = ''
 
 try:
 
