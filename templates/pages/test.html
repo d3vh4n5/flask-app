@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block title %}Página de Inicio{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <style>
+        body{
+            background-color: black;
+            color: red;
+        }
+    </style>
+
+    <h2>En esta página hay puros tests </h2>
+    <hr>
+    <div>
+        <form action="/test" method="post">
+            <button>Testear el correcto funcionamiento de sqlite</button>
+        </form>
+        <p>Test de sqlite :</p>
+        <!-- Botón fuera del formulario -->
+        <button id="btn_fuera">Botón Fuera</button>
+
+        {% if usuarios %}
+        <ul>    
+            {% for usuario in usuarios %}
+            <li>{{ usuario.nombre }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <script>
+            // Manejar el clic del botón fuera del formulario
+            document.getElementById('btn_fuera').addEventListener('click', function() {
+                // Enviar una solicitud al servidor usando AJAX (puedes ajustar según tus necesidades)
+                var xhr = new XMLHttpRequest();
+                // xhr.open('POST', '/fuera-del-formulario', true);
+                xhr.open('POST', '/test', true);
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                xhr.send(JSON.stringify({ boton_fuera: true }));
+
+                // Puedes hacer más acciones aquí después de enviar la solicitud al servidor
+            });
+        </script>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
