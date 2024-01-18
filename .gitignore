@@ -1,3 +1,4 @@
 flask_venv
 __pycache__
 .env
+dblite.db

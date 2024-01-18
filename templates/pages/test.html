@@ -9,7 +9,7 @@
     <style>
         body{
             background-color: black;
-            color: red;
+            color: rgb(5, 240, 150);
         }
     </style>
 
@@ -21,8 +21,7 @@
         </form>
         <p>Test de sqlite :</p>
         <!-- Botón fuera del formulario -->
-        <button id="btn_fuera">Botón Fuera</button>
-
+        
         {% if usuarios %}
         <ul>    
             {% for usuario in usuarios %}
@@ -30,6 +29,20 @@
             {% endfor %}
         </ul>
         {% endif %}
+        <hr>
+
+        <p>
+            Test de variables de entorno
+        </p>
+        {% if variableEnvTest %}
+        <p>
+            La clave es: {{variableEnvTest}}
+        </p>
+        {% endif %}
+
+        <hr>
+
+        <button id="btn_fuera">Botón Fuera</button>
 
         <script>
             // Manejar el clic del botón fuera del formulario

@@ -51,12 +51,13 @@ def hello(name):
 
 @app.route("/test", methods=['POST', 'GET'])
 def test():
+    variableEnvTest = os.environ.get('ENV_VAR', 'Esta no es una variable de entorno')
     if request.method == 'POST':
         print('Hubo un post')
         usuarios = sqliteTest()
         print(usuarios)
         return render_template('pages/test.html', usuarios=usuarios)
-    return render_template('pages/test.html')
+    return render_template('pages/test.html', variableEnvTest=variableEnvTest)
 
 @app.route('/fuera-del-formulario', methods=['POST'])
 def fuera_del_formulario():
