@@ -35,7 +35,7 @@ try:
         # with connection.cursor() as cursor:
         #     # Read a single record
         #     sql = "SELECT `id`, `nombre` FROM `usuarios` WHERE `email`=%s"
-        #     cursor.execute(sql, ('juanangelbasgall@hotmail.com',))
+        #     cursor.execute(sql, ('juanangelbasgall@hotmail.com',)) # (sql, array de datos)
         #     result = cursor.fetchone()
         #     print(result)
         
@@ -108,11 +108,19 @@ def contactHandling():
     # Permitimos conexion de cualquier lado !!! WARNING Security!
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
     if request.method == 'POST':
-        data = request.form
+        print("Hubo un post")
+
+        # jsonData = request.get_json() # Esto es si envio datos tipo json
+        # print(jsonData['nombre'])
+        # print(jsonData['edad'])
+        # print(jsonData['soltero'])
+
+        data = request.form # Esto es para el etandar de form-data
         print(data['email'])
         print(data['motivo'])
         print(data['mensaje'])
-        return respuesta
+        # return respuesta
+        return "<h1>Información enviada correctamente!</h1>"
     return render_template('pages/contacto.html')
 
 
@@ -120,7 +128,8 @@ def contactHandling():
 
 
 
-
+# Importante para que en algunos entornos ejecute la aplicaciones
+# Dependiendo donde esté desplegado
 if __name__ == "__main__":
     app.run(debug=True)
 
